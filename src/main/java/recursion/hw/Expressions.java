@@ -35,7 +35,7 @@ public class Expressions {
     static void genExp(String str, String currStr, long target, int i, long currSum, long last, ArrayList<String> result) {
 
         if (i == str.length()) {
-            System.out.println(currStr);
+            //System.out.println(currStr);
             if (currSum == target) {
                 result.add(currStr);
             }
