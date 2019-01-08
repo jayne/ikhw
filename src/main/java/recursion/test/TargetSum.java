@@ -1,21 +1,24 @@
 package recursion.test;
 
+
+//space O(n) //  it is n because of the stack tree.
+// time O(2^n)
 public class TargetSum {
 
     public static void main(String[] args) {
         long[] arr = {3,2,4,8};
-        long k = 102;
+        long k = 10;
         boolean result = check_if_sum_possible(arr, k);
         System.out.println(result);
     }
 
     static boolean check_if_sum_possible(long[] arr, long k) {
 
-        return checkSum(arr, 0,0, k, 0, false);
+        return checkSum(arr, 0, k, false);
     }
 
-    static boolean checkSum(long[] arr, int ptr, int resultPtr, long k, long total, boolean oneElem){
-        if(total==k && oneElem){
+    static boolean checkSum(long[] arr, int ptr, long diff, boolean oneElem){
+        if(diff==0 && oneElem){
             return true;
         }
         if(ptr==arr.length){
@@ -24,9 +27,9 @@ public class TargetSum {
 
         for(int i = ptr; i<arr.length; i++){
 
-            boolean doNotAdd = checkSum(arr, ptr+1, resultPtr, k, total, oneElem);
+            boolean doNotAdd = checkSum(arr, ptr+1, diff, oneElem);
             if(doNotAdd) return true;
-            return checkSum(arr, ptr+1,resultPtr+1, k, total+arr[i], true);
+            return checkSum(arr, ptr+1, diff-arr[i], true);
         }
 
 
