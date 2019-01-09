@@ -1,5 +1,7 @@
 package tips;
 
+import trees.Node;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -70,6 +72,28 @@ public class Utils {
 
     public static void main(String[] args) {
         implementPriorityQueue();
+    }
+
+    private static void printTree(Node n) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(n);
+        int count = 1;
+
+        while (!queue.isEmpty()) {
+            Node it = queue.remove();
+
+            System.out.print(it.value);
+
+            if (it.left != null) queue.add(it.left);
+            if (it.right != null) queue.add(it.right);
+
+            count--;
+            if (count == 0) {
+                System.out.println();
+                count = queue.size();
+            }
+
+        }
     }
 
 
