@@ -96,5 +96,32 @@ public class Utils {
         }
     }
 
+    private static void comparatorExamplePriorityQueue(){
+        Comparator<Node> comp = new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+//                System.out.println(o1.value + " " + o2.value);
+                return o1.value >= o2.value ? 1 : -1;
+            }
+        };
+
+        Node n1 = new Node(6);
+        Node n2 = new Node(4);
+        Node n3 = new Node(10);
+
+        PriorityQueue<Node> pq = new PriorityQueue(3, comp);
+        pq.add(n1); //6
+        pq.add(n2); // 4
+        pq.add(n3);// 10
+
+        System.out.println("!!!!");
+        Node popped = pq.remove();
+        System.out.println(popped.value);
+        popped = pq.remove();
+        System.out.println(popped.value);
+        popped = pq.remove();
+        System.out.println(popped.value);
+        System.out.println("$$$$$");
+    }
 
 }
