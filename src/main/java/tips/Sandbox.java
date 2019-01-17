@@ -1,7 +1,10 @@
 package tips;
 
+import trees.Node;
+
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 /**
@@ -9,20 +12,13 @@ import java.util.Set;
  */
 public class Sandbox {
     public static void main(String[] args) {
-        String str = "jayne";
-        testing(str);
+
+
+      
     }
 
-    static void testing(String str) {
-        String before = str;
-        if(str.length()==0) {
-            return;
-        }
 
-        str = str.substring(1);
 
-        System.out.println(before + ":" + str);
-    }
 
 }
 
