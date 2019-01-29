@@ -6,7 +6,7 @@ public class BSTComboWIthNNodes {
 
     public static void main(String[] args) {
 
-        int n = 3;
+        int n = 5;
 
 
         long result = how_many_BSTs(n);

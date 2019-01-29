@@ -3,6 +3,7 @@ package recursion.youtube;
 /**
  * Created by jaynehsu on 12/17/18.
  */
+// A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square only once.
 public class KnightTour {
 
     static int[] iMoves = {-1, -2, -2, -1, 1, 1, 2, 2};
@@ -56,10 +57,9 @@ public class KnightTour {
             }
         }
 
-        arr[i][j]=0;
+        arr[i][j] = 0;
         return false;
     }
-
 
 
 }

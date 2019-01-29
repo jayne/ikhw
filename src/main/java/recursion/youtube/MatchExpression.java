@@ -23,54 +23,46 @@ public class MatchExpression {
 
 //        System.out.println(isMatch(str1, exp5));
 
-        System.out.println(isMatch("abbc", "a?c", 0, 0));
+        System.out.println(isMatch("abbc", "a??c", 0, 0));
 
     }
 
-    static boolean isMatch(String str, String exp, int ePtr, int sPtr) {
+    public static boolean isMatch(String str, String exp, int ptrStr, int ptrExp){
 
-        if (sPtr == str.length() && ePtr == exp.length()) {
+        if(ptrStr == str.length() && ptrExp==exp.length()){
             return true;
-        } else if (ePtr == exp.length()) {
+        }else if(ptrExp == exp.length()){
             return false;
-        } else if (sPtr == str.length()) {
-
-            for (int i = ePtr; i < exp.length(); i++) {
-                char e = exp.charAt(i);
-                if (e != '*' && e!='?') {
-                    return false;
-                }
+        }else if(ptrStr == str.length()){
+            for(char c : exp.substring(ptrExp+1).toCharArray()){
+                if( c!='?' && c!='*') return false;
             }
             return true;
         }
 
-        char s = str.charAt(sPtr);
-        char e = exp.charAt(ePtr);
+        char strChar = str.charAt(ptrStr);
+        char expChar = exp.charAt(ptrExp);
 
-        if (e == '.') {
-            return isMatch(str, exp, ePtr + 1, sPtr + 1);
-
-        } else if (e == '*') {
-
-            if (isMatch(str, exp, ePtr, sPtr + 1) || //multiple
-                    isMatch(str, exp, ePtr + 1, sPtr)) { // 0 times
-                return true;
-            }
-
-            return false;
-        } else if (e=='?') {
-            if (isMatch(str, exp, ePtr+1, sPtr + 1) || //1
-                    isMatch(str, exp, ePtr + 1, sPtr)) { // 0 times
-                return true;
-            }
-
-            return false;
-        } else {
-            if (s != e) {
-                return false;
-            }
-            return isMatch(str, exp, ePtr + 1, sPtr + 1);
+        if(expChar == '.'){
+            return isMatch(str, exp, ptrStr+1, ptrExp + 1);
         }
+        if(expChar == '?'){
+            boolean zero = isMatch(str, exp, ptrStr, ptrExp+1);
+            boolean one =  isMatch(str, exp, ptrStr+1, ptrExp+1);
+            return zero || one;
+        }
+
+        if(expChar == '*'){
+            boolean zero = isMatch(str, exp, ptrStr, ptrExp+1);
+            boolean more = isMatch(str, exp, ptrStr+1, ptrExp);
+            return zero || more;
+        }
+
+        if(expChar == strChar){
+            return isMatch(str, exp, ptrStr+1, ptrExp + 1);
+        }
+
+        return false;
     }
 
 }

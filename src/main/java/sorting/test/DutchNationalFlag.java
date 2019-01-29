@@ -31,9 +31,7 @@ public class DutchNationalFlag {
                 i--;
             }
         }
-
         return new String(cballs);
-
     }
 
     static String sort(String balls){
@@ -41,7 +39,6 @@ public class DutchNationalFlag {
 
         int pointerR1 = 0;
         int pointerB3 = balls.length()-1;
-
 
         for(int i = 0; i<chars.length; i++){
             System.out.println("\t" + new String(chars));

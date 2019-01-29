@@ -2,6 +2,8 @@ package trees.hw;
 
 import trees.Node;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by jaynehsu on 1/10/19.
  */
@@ -10,59 +12,112 @@ import trees.Node;
 
 
 public class SingleValueTrees {
-    private static Node prepData() {
-        Node n1 = new Node(5);
-        Node n2 = new Node(5);
-        Node n3 = new Node(5);
-        Node n4 = new Node(5);
-        Node n5 = new Node(5);
-        Node n6 = new Node(5);
 
-        n1.left = n2;
-        n1.right = n3;
-        n2.left = n4;
-        n2.right = n5;
-        n3.left = n6;
-
-        return n1;
-    }
-
-    private static Node prepData2() {
-        Node n1 = new Node(5);
-        Node n2 = new Node(4);
-        Node n3 = new Node(5);
-        Node n4 = new Node(4);
-        Node n5 = new Node(4);
-        Node n6 = new Node(5);
-
-        n1.left = n2;
-        n1.right = n3;
-        n2.left = n4;
-        n2.right = n5;
-        n3.left = n6;
-
-        return n1;
-    }
     public static void main(String[] args) {
-        Node n = prepData();
-        int result = findSingleValueTrees(n);
-        System.out.println(result);
+        TreeNode root = prepData2();
+        int result[] = countUnival(root);
+        System.out.println(result[1]);
 
     }
 
-    static int findSingleValueTrees(Node n) {
-        if(n==null){
-            return 0;
+    // [0] = 0 if false, 1 if true
+    // [1] = # of subtrees
+    private static int[] countUnival(TreeNode root) {
+        int[] result = new int[2];
+
+        if (root == null) {
+            result[0] = 1;
+            result[1] = 0;
+            return result;
         }
 
-        int left = findSingleValueTrees(n.left);
-        int right = findSingleValueTrees(n.right);
+        int[] left = countUnival(root.left_ptr);
+        int[] right = countUnival(root.right_ptr);
 
-        if((n.right!=null && n.right.value!=n.value) || (n.left!=null && n.left.value!=n.value)){
-           return left+right;
+        if(left[0] == 0 || right[0] == 0){  // if either of the below are not single value trees, then neither is this root
+            result[0] = 0;
+            result[1] = left[1] + right[1];
+            return result;
         }
-        return 1 + left+right;
 
+        boolean isMatch = true;
+        int count = 0;
+
+        if(left[1] == 0 && right[1] == 0){ // if it is a leaf node
+            result[0] = 1;
+            result[1] = 1;
+            return result;
+        }
+
+        if(left[1] != 0) { // left exists...get the child count and check the value against root
+            isMatch = root.left_ptr.val == root.val ? true : false;
+            count = count + left[1];
+        }
+        if(right[1]!= 0){ // right exists...get the child count and check the value against root
+            isMatch = (root.right_ptr.val != root.val) || isMatch == false ? false : true;
+            count = count + right[1];
+        }
+
+        count = count + (isMatch? 1 : 0);
+
+        result[0] = isMatch ? 1 : 0;
+        result[1] = count;
+
+        return result;
+    }
+
+    private static class TreeNode{
+        public int val;
+        public TreeNode left_ptr;
+        public TreeNode right_ptr;
+
+        public TreeNode(){
+            this.left_ptr = null;
+            this.right_ptr = null;
+        }
+
+        public TreeNode(int val){
+            this.val = val;
+            this.left_ptr = null;
+            this.right_ptr = null;
+        }
+    }
+
+    private static TreeNode prepData() { //6
+        TreeNode one = new TreeNode(5);
+        TreeNode two = new TreeNode(5);
+        TreeNode three = new TreeNode(5);
+        TreeNode four = new TreeNode(5);
+        TreeNode five = new TreeNode(5);
+//        Node six = new Node(5);
+        TreeNode seven = new TreeNode(5);
+
+        one.left_ptr = two;
+        one.right_ptr = three;
+
+        two.left_ptr = four;
+        two.right_ptr = five;
+
+//        three.left = six;
+        three.right_ptr = seven;
+
+        return one;
+
+    }
+
+    private static TreeNode prepData2() { //5
+        TreeNode n0 = new TreeNode(1);
+        TreeNode n1 = new TreeNode(1);
+        TreeNode n2 = new TreeNode(1);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(1);
+
+        n0.left_ptr = n1;
+        n0.right_ptr = n2;
+        n1.left_ptr = n3;
+        n1.right_ptr = n4;
+
+        return n0;
     }
 
 

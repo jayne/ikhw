@@ -13,6 +13,7 @@ public class HeapSort {
 
         print(minArr);
         int min = popMin(minArr);
+        System.out.println(min);
         print(minArr);
     }
 
@@ -25,15 +26,15 @@ public class HeapSort {
     static int[] minHeap(int[] arr){
         for(int j = arr.length; j>1; j--){
             int i = j;
-            while(i>1) {
+            //while(i>1) {
                 int parent = i/2;
                 if (arr[i - 1] < arr[parent - 1]) {
                     int temp = arr[i - 1];
                     arr[i - 1] = arr[parent - 1];
                     arr[parent - 1] = temp;
                 }
-                i = parent;
-            }
+                //i = parent;
+           // }
         }
         return arr;
     }

@@ -59,6 +59,7 @@ public class TopK {
         return;
     }
 
+    // this is used when adding a new element into the array
     static void heapifyUp(ArrayList<Integer> minHeap,int index ){
         if(index==0){
             return;

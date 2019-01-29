@@ -107,7 +107,7 @@ public class Utils {
 
         Node n1 = new Node(6);
         Node n2 = new Node(4);
-        Node n3 = new Node(10);
+        Node n3 = new Node(9);
 
         PriorityQueue<Node> pq = new PriorityQueue(3, comp);
         pq.add(n1); //6

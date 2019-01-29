@@ -19,7 +19,6 @@ public class Substring {
         System.out.println("solution1: " + str_s1);
     }
 
-    //WIP
     static String s1(String str){
 
         HashMap<Character,Integer> map = new HashMap();

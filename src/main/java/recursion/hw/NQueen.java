@@ -63,13 +63,13 @@ public class NQueen {
 
     static void permute(ArrayList<String[]> results, ArrayList<int[]> result, int[] arr, int pos) {
         if (pos == arr.length && isValid(arr,arr.length)) {
-            int[] dupe = arr.clone();
-            result.add(dupe);
+            int[] dupe = arr.clone(); // THIS IS KEY
+            result.add(dupe); // THIS IS KEY
             print(dupe);
             results.add(makeBoard(dupe));
         }
 
-        for (int i = pos; i < arr.length; i++) {
+        for (int i = pos; i < arr.length; i++) { // THIS IS KEY i=pos
             swap(arr, pos, i);
             if(isValid(arr,pos)) {
                 permute(results, result, arr, pos + 1);

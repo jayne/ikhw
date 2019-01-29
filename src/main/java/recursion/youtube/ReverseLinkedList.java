@@ -14,16 +14,16 @@ public class ReverseLinkedList {
         usingNodesSkipK();
     }
 
-    static class Node {
-        int value;
-        Node next;
+    public static class Node {
+        public int value;
+        public Node next;
 
-        Node(int value, Node next) {
+        public Node(int value, Node next) {
             this.value = value;
             this.next = next;
         }
 
-        void setNext(Node n) {
+        public void setNext(Node n) {
             this.next = n;
         }
     }
