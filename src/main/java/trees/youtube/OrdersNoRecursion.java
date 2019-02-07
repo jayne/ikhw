@@ -117,7 +117,6 @@ public class OrdersNoRecursion {
     // left, right, root 4526731
     private static void printPostOrderOneStack(Node n) {
         Stack<Node> stack = new Stack<>();
-        Stack<Node> rootStack = new Stack<>();
 
         Node it = n;
         boolean start = true;

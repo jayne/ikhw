@@ -83,9 +83,9 @@ public class LeastCommonAncestor {
     }
 
     static int pickLca(Node head, Node a, Node b) {
-//        return lcaCountLevels(head, a, b);
+        return lcaCountLevels(head, a, b);
 //        return mylca(head, a, b);
-        return mlcaNodes(head, a, b);
+//        return mlcaNodes(head, a, b);
 
 
     }

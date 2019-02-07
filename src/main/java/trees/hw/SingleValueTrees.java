@@ -1,6 +1,7 @@
 package trees.hw;
 
 import trees.Node;
+import trees.TreeNode;
 
 import java.lang.reflect.Field;
 
@@ -64,23 +65,6 @@ public class SingleValueTrees {
         result[1] = count;
 
         return result;
-    }
-
-    private static class TreeNode{
-        public int val;
-        public TreeNode left_ptr;
-        public TreeNode right_ptr;
-
-        public TreeNode(){
-            this.left_ptr = null;
-            this.right_ptr = null;
-        }
-
-        public TreeNode(int val){
-            this.val = val;
-            this.left_ptr = null;
-            this.right_ptr = null;
-        }
     }
 
     private static TreeNode prepData() { //6

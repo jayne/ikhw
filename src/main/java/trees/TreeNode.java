@@ -23,5 +23,14 @@ public class TreeNode {
         this.right_ptr = null;
     }
 
+    public static void printInorder(TreeNode n){
+        if(n==null) return;
+
+        printInorder(n.left_ptr);
+        System.out.print(n.val + " ");
+        printInorder(n.right_ptr);
+
+    }
+
 
 }
