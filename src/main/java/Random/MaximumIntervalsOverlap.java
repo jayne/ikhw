@@ -1,4 +1,4 @@
-package trees.geeksforgeeks;
+package Random;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -32,7 +32,7 @@ public class MaximumIntervalsOverlap {
         int depPtr = 0;
 
         //
-        while (arrPtr < arr.length) { // only care about arrivals because departures can only decrase the maxNumOfGuests
+        while (arrPtr < arr.length) { // only care about arrivals because departures can only decrease the maxNumOfGuests
             if (arr[arrPtr] < dep[depPtr]) {
                 numOfGuests++;
                 if(numOfGuests>maxNumOfGuests){

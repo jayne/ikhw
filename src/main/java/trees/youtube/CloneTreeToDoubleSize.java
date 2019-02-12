@@ -7,7 +7,7 @@ import static trees.Node.printTree;
 /**
  * Created by jaynehsu on 1/8/19.
  */
-public class CloneTree {
+public class CloneTreeToDoubleSize {
     private static Node prepData() {
         Node n1 = new Node(1);
         Node n2 = new Node(2);

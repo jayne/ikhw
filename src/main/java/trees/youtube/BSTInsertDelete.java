@@ -24,7 +24,7 @@ public class BSTInsertDelete {
 
         Node n8 = new Node(0);
         Node n9 = new Node(2);
-        Node n10 = new Node(2);
+        Node n10 = new Node(3);
         Node n11 = new Node(4);
         Node n12 = new Node(6);
         Node n13 = new Node(8);
@@ -53,8 +53,8 @@ public class BSTInsertDelete {
 
     public static void main(String[] args) {
 //        doInsert();
-//        doSuccessor();
-        doDelete();
+        doSuccessor();
+//        doDelete();
     }
 
     static void printStack(Stack<Node> stack) {
@@ -125,10 +125,10 @@ public class BSTInsertDelete {
     static void doSuccessor() {
         Node n = prepData();
 
-        int value = 8;
+        int value = 7;
         Node successor = getSuccessor(n, value);
         printInorder(n);
-        System.out.println();
+        System.out.println("Successor of " + value + " is " + successor.value);
         printTree(n);
 
     }

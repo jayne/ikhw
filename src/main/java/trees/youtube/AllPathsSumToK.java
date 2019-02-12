@@ -10,7 +10,10 @@ import java.util.List;
 /**
  * Created by jaynehsu on 1/4/19.
  */
+
+
 public class AllPathsSumToK {
+
     static Node buildData1() {
         Node n1 = new Node(1);
         Node n2 = new Node(2);
@@ -23,7 +26,7 @@ public class AllPathsSumToK {
         Node n9 = new Node(9);
         Node n10 = new Node(10);
         Node n11 = new Node(11);
-        Node n12 = new Node(12);
+        Node n12 = new Node(3);
         Node n13 = new Node(13);
 
         n1.left = n2;
@@ -42,85 +45,55 @@ public class AllPathsSumToK {
         return n1;
     }
 
-
     public static void main(String[] args) {
-
         Node n = buildData1();
-        List<LinkedList<Node>> paths = getPaths(n, new LinkedList<Node>(), 0, 26);
+        int k = 26;
+
+        List<Integer> path = new ArrayList<>();
+        List<List<Integer>> paths = getPaths(n, k, path);
+
         print(paths);
-
-//        classSolutionPrintPaths(n, new LinkedList<Node>(), 26);
     }
 
-    static void classSolutionPrintPaths(Node n, LinkedList<Node> path, int target){
-        if(n==null){
-            return;
-        }
-        path.add(n);
-        target = target-n.value;
-        if(n.left == null && n.right == null && target==0){
-            print(path);
-            return;
-        }
-
-        classSolutionPrintPaths(n.left, path, target);
-        classSolutionPrintPaths(n.right, path, target);
-
-        path.removeLast();
-
-
-
-    }
-
-    static void print(LinkedList<Node> path){
-        Iterator<Node> iter = path.iterator();
-        while(iter.hasNext()){
-            System.out.print(iter.next().value + " ");
-        }
-        System.out.println();
-    }
-
-    static void print(List<LinkedList<Node>> paths) {
-        for (int i = 0; i < paths.size(); i++) {
-            LinkedList<Node> path = paths.get(i);
-            Iterator<Node> iter = path.iterator();
-            while(iter.hasNext()){
-                System.out.print(iter.next().value + " ");
+    private static void print(List<List<Integer>> paths) {
+        for (List<Integer> l : paths) {
+            for (Integer i : l) {
+                System.out.print(i + " ");
             }
             System.out.println();
         }
-
     }
 
 
-    static List<LinkedList<Node>> getPaths(Node n, LinkedList path, int total, int target) {
-        List list = new ArrayList<LinkedList>();
+    private static List getPaths(Node n, int k, List<Integer> path) {
+        List<List<Integer>> result = new ArrayList<>();
+
         if (n == null) {
-            return list;
+
+            return result;
         }
 
-        path.add(n);
+        k = k - n.value;
+        path.add(n.value);
 
-        if (n.left == null && n.right == null) {
-            if (n.value + total == target) {
-                list.add((LinkedList<Node>)path.clone());
-                return list;
-            }
+        if (n.left == null && n.right == null && k == 0) {
+            List onePath = new ArrayList();
+            onePath.addAll(path);
+            result.add(onePath);
+            path.remove(path.size() - 1);
+            return result;
         }
 
-        total = total + n.value;
 
-        List<LinkedList<Node>> left = getPaths(n.left, path, total, target);
-        List<LinkedList<Node>> right = getPaths(n.right, path, total, target);
+        List<List<Integer>> left = getPaths(n.left, k, path);
+        List<List<Integer>> right = getPaths(n.right, k, path);
 
-        path.removeLast();
+        path.remove(path.size() - 1);
 
-        list.addAll(left);
-        list.addAll(right);
-
-        return list;
+        result.addAll(left);
+        result.addAll(right);
+        return result;
     }
-
 
 }
 
