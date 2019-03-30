@@ -32,6 +32,7 @@ public class RecreateBankLine {
     // using a segment tree type of deal so that you can put them in line much faster
     // a similar interview problem is "put a bunch of people in a line of chairs". once u place them, you update it
     // another interview problem is to find quickly find a minimum amount in a given range
+    // i dont think i ever got this class solution working
     private static Person[] classSort(PriorityQueue<Person> people){
         Person[] result = new Person[people.size()];
 

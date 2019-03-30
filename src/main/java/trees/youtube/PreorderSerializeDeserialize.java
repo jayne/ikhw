@@ -9,6 +9,7 @@ import static trees.Node.printInorder;
 /**
  * Created by jaynehsu on 1/9/19.
  */
+// this solution only does single numbers
 public class PreorderSerializeDeserialize {
     private static Node prepData() {
         Node n1 = new Node(5);

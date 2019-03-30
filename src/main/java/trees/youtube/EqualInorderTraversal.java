@@ -39,6 +39,7 @@ public class EqualInorderTraversal {
         Node n5 = new Node(5);
         Node n6 = new Node(6);
         Node n7 = new Node(7);
+        Node n8 = new Node(8);
 
         n6.right = n7;
         n6.left = n3;
@@ -46,6 +47,8 @@ public class EqualInorderTraversal {
         n3.right = n4;
         n2.left = n1;
         n4.right = n5;
+                n7.right = n8;
+
         return n6;
     }
 

@@ -8,11 +8,13 @@ import java.util.Iterator;
 /**
  * Created by jaynehsu on 11/8/18.
  */
-public class Substring {
+public class ShortestSubstringContainingSet {
     public static void main(String[] args) {
-        String str = "shortest substring containing set";
-        String str_brute = bruteForce(str);
+//        String str = "shortest substring containing set";
+        String str = "abbac";
 
+
+        String str_brute = bruteForce(str);
         String str_s1 = s1(str);
 
         System.out.println("brute: " + str_brute);
@@ -26,15 +28,18 @@ public class Substring {
         String shortest = null;
 
         for(int i = 0, j = 0; j<str.length(); j++){
+            System.out.println("eval " + str.charAt(j) + "z i is: " + i + " j is: " + j);
             if(!map.containsKey(str.charAt(j))){
                 map.put(str.charAt(j),1);
                 shortest = str.substring(i,j+1);
+                System.out.println("\tshortest is " + shortest);
             }else{
                 map.put(str.charAt(j), map.get(str.charAt(j))+1);
                 while(map.get(str.charAt(i))>1){
                     map.put(str.charAt(i), map.get(str.charAt(i))-1);
                     i++;
                     shortest = str.substring(i,j+1);
+                    System.out.println("\tshortest is " + shortest);
                 }
             }
         }

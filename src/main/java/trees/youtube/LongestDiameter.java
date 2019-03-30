@@ -42,7 +42,7 @@ public class LongestDiameter {
     public static void main(String[] args) {
         Node n = prepData(); // ans: 9
         ArrayList<Integer> diameter = getDiameter(n);
-        System.out.println(diameter.get(0));
+        System.out.println("Answer" + diameter.get(0));
     }
 
     // [0] longest

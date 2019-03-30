@@ -6,7 +6,7 @@ import java.util.Queue;
 /**
  * Created by jaynehsu on 1/4/19.
  */
-public class Interval {
+public class Interval implements Comparable<Interval>{
     public Interval left;
     public Interval right;
     public int min;
@@ -32,5 +32,12 @@ public class Interval {
                 ", max=" + max +
                 ", overallmax=" + overallmax +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Interval o) {
+        if(this.min==o.min) return 0;
+        if(this.min>o.min) return 1;
+        return -1;
     }
 }
